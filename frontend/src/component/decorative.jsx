@@ -7,15 +7,25 @@ const blobPaths = [
   "M36.6,-51.7C47.7,-42.8,55.9,-33.5,61.5,-22.1C67.2,-10.7,70.2,3,66.8,16.4C63.5,29.8,53.7,42.9,42.5,49.1C31.2,55.3,18.6,54.5,7.2,50.4C-4.2,46.3,-8.5,38.8,-21.7,37.7C-34.9,36.5,-57,41.6,-60.3,34.2C-63.6,26.8,-48.1,6.9,-43.3,-9.6C-38.5,-26.1,-44.5,-39.2,-42.4,-48.6C-40.3,-58.1,-30.1,-63.9,-18.1,-64.9C-6,-65.8,7,-62,21.5,-59.7C36,-57.5,51.2,-56.7,36.6,-51.7Z",
 ];
 
-const colors = ["#FDE68A", "#FACC15", "#EAB308", "#FEF08A", "#FFF7E0"];
+// Professional muted palette
+const colors = [
+  "#e5e7eb", // light gray
+  "#cbd5e1", // cool gray
+  "#94a3b8", // slate gray
+  "#64748b", // deeper slate
+  "#475569", // dark blue-gray
+  "#d1d5db", // soft neutral
+];
 
 export default function DecorativeBlobs() {
   const blobs = Array.from({ length: 6 }).map((_, i) => {
-    const size = 200 + Math.random() * 100;
+    const size = 180 + Math.random() * 120;
     const top = Math.random() * 90;
     const left = Math.random() * 90;
     const delay = Math.random() * 5;
     const rotateStart = Math.random() * 360;
+    const blur = 20 + Math.random() * 10;
+    const opacity = 0.08 + Math.random() * 0.12; // softer
 
     return {
       size,
@@ -23,7 +33,10 @@ export default function DecorativeBlobs() {
       left,
       delay,
       rotateStart,
+      blur,
+      opacity,
       path: blobPaths[i % blobPaths.length],
+      altPath: blobPaths[(i + 1) % blobPaths.length],
       color: colors[i % colors.length],
     };
   });
@@ -42,25 +55,33 @@ export default function DecorativeBlobs() {
             top: `${blob.top}%`,
             left: `${blob.left}%`,
             position: "absolute",
-            opacity: 0.25,
-            filter: "blur(25px)",
+            opacity: blob.opacity,
+            filter: `blur(${blob.blur}px)`,
             transformOrigin: "50% 50%",
           }}
           animate={{
             rotate: [blob.rotateStart, blob.rotateStart + 360],
-            scale: [1, 1.05, 1],
+            scale: [1, 1.03, 1], // subtle scale
           }}
           transition={{
             repeat: Infinity,
-            duration: 30 + i * 7,
+            duration: 30 + Math.random() * 15,
             ease: "easeInOut",
             delay: blob.delay,
           }}
         >
-          <path
+          <motion.path
             transform="translate(50 50)"
             d={blob.path}
             fill={blob.color}
+            animate={{
+              d: [blob.path, blob.altPath, blob.path],
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: 25 + Math.random() * 10,
+              ease: "easeInOut",
+            }}
           />
         </motion.svg>
       ))}

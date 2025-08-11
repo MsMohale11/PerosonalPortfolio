@@ -3,10 +3,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import ParticleBackground from "../particlesbg";
-import profile from "../1page/profile.png";
+import profile from "../1page/profile.jpeg";
 
 const DecorativeSVGs = () => {
-  const colors = ["#FDE68A", "#FACC15", "#EAB308", "#FEF08A"];
+  const colors = ["#E9D5FF", "#C084FC", "#A855F7", "#D8B4FE"]; // light to deep purples
   const size = [20, 30, 40, 50];
   const positions = Array.from({ length: 12 }).map(() => ({
     top: `${Math.random() * 100}%`,
@@ -72,29 +72,50 @@ export default function ProfilePage() {
             animate="visible"
             key="content"
           >
-            <motion.h2 className="text-2xl font-bold text-yellow-400 drop-shadow-[0_0_10px_rgba(255,215,0,0.7)]" variants={itemVariants}>
-              HI THERE!
-            </motion.h2>
-            <motion.h1 className="text-5xl font-extrabold mt-3 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]" variants={itemVariants}>
-              <span className="text-black">I'M</span>{" "}
-              <span className="text-yellow-400">MODUDE</span>
-            </motion.h1>
-            <motion.div className="mt-6 space-y-3" variants={itemVariants}>
-              <div className="inline-block text-black font-semibold px-4 py-2 rounded bg-yellow-400">
-                FRONTEND DEVELOPER / UI/UX
-              </div>
-              <div className="block bg-black text-white font-semibold px-4 py-2 rounded w-fit">
-                READY TO HANDLE YOUR NEW PROJECT
-              </div>
-            </motion.div>
-            <motion.p className="text-gray-400 mt-6 leading-relaxed max-w-md" variants={itemVariants}>
-              Versatile lorem ipsum. Eu posuere morbi non eros ac ante eu vehicula.
-            </motion.p>
-            <motion.button
-              className="mt-8 px-6 py-3 bg-yellow-400 text-black font-semibold rounded-full shadow-md hover:bg-yellow-500 transition-all duration-300"
+            <motion.h2
+              className="text-3xl sm:text-4xl font-bold text-purple-400 drop-shadow-[0_0_10px_rgba(168,85,247,0.7)] tracking-wide"
               variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
+            >
+              HEY THERE! 
+            </motion.h2>
+
+            <motion.h1
+              className="text-5xl sm:text-6xl font-extrabold mt-4 drop-shadow-[0_0_5px_rgba(255,255,255,0.5)] leading-tight"
+              variants={itemVariants}
+            >
+              <span className="text-white">I'M </span>
+              <span className="text-purple-400">KHUSHBOO</span>
+            </motion.h1>
+
+            <motion.p
+              className="text-lg sm:text-xl text-gray-200 mt-6 max-w-xl font-medium"
+              variants={itemVariants}
+            >
+              A creative mind with a love for clean UI, smooth UX, and interactive frontend magic.  
+              Let’s make something amazing together.
+            </motion.p>
+
+            <motion.div className="mt-6 space-y-3" variants={itemVariants}>
+              <motion.div
+                className="inline-block text-white font-semibold px-4 py-2 rounded-full bg-purple-500 shadow-md"
+                whileHover={{ scale: 1.05 }}
+              >
+                FRONTEND DEVELOPER ⚡ UI/UX ENTHUSIAST
+              </motion.div>
+              <motion.div
+                className="inline-block text-purple-500 font-semibold px-4 py-2 rounded-full bg-white shadow-md"
+                whileHover={{ scale: 1.05 }}
+              >
+                READY TO DESIGN YOUR NEXT EXPERIENCE ✨
+              </motion.div>
+            </motion.div>
+
+            <motion.button
+              className="mt-8 px-6 py-3 bg-purple-500 text-white font-semibold rounded-full shadow-md hover:bg-purple-600 transition-all duration-300"
+              variants={itemVariants}
+              whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => navigate("/about")}
             >
               MORE ABOUT ME
             </motion.button>
@@ -122,34 +143,34 @@ export default function ProfilePage() {
   const resetTilt = () => setTiltStyle({ transform: "rotateX(0deg) rotateY(0deg)" });
 
   return (
-    <div className="w-screen min-h-screen bg-white text-white relative overflow-x-hidden">
+    <div className="w-screen min-h-screen bg-purple-900 text-white relative overflow-x-hidden">
       {/* Background Effects */}
       <ParticleBackground />
       <DecorativeSVGs />
 
       <div className="relative z-10 w-full min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-10 py-10">
         <div className="flex flex-col md:flex-row max-w-[1200px] w-full items-center justify-between gap-10">
-          {/* Left */}
+          {/* Left Section */}
           <div className="flex-1 max-w-full md:max-w-[550px] mb-8 md:mb-0 px-4 sm:px-0">
             <AnimatePresence mode="wait">{renderContent()}</AnimatePresence>
           </div>
 
-          {/* Right */}
+          {/* Right Section */}
           <div className="relative w-[280px] h-[280px] md:w-[400px] md:h-[400px] flex items-center justify-center">
             <motion.div
-              className="w-[250px] h-[250px] md:w-[280px] md:h-[280px] rounded-full overflow-hidden z-10 border-4 border-yellow-400 shadow-xl shadow-yellow-200"
+              className="w-[250px] h-[250px] md:w-[280px] md:h-[280px] rounded-full overflow-hidden z-10 border-4 border-purple-400 shadow-md shadow-purple-300"
               style={tiltStyle}
               onMouseMove={handleMouseMove}
               onMouseLeave={resetTilt}
               initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              animate={{ scale: [0.9, 1.05, 1], opacity: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
               whileHover={{ scale: 1.05 }}
             >
               <img
                 src={profile}
-                alt="Modude"
-                className="w-full h-full object-cover object-top rounded-full"
+                alt="khushboo"
+                className="w-full h-full mb-[-2%] object-cover object-top rounded-full"
               />
             </motion.div>
 

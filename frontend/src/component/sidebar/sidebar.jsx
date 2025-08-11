@@ -6,12 +6,11 @@ import {
   FaCamera,
   FaDesktop,
   FaPaperPlane,
-  FaBars,
-  FaTimes,
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
-import modude from "../sidebar/modude.jpeg";
+// import modude from "../sidebar/modude.jpeg";
+import profile from "../1page/profile.jpeg";
 import Switch from "./switch";
 
 function Sidebar() {
@@ -54,19 +53,16 @@ function Sidebar() {
   return (
     <>
       {/* Hamburger Button (Mobile Only) */}
-      <div className="fixed top-8 right-10 z-50 sm:hidden ">
-  <Switch checked={isOpen} onChange={() => setIsOpen(!isOpen)} />
-</div>
+      <div className="fixed top-8 right-10 z-50 sm:hidden">
+        <Switch checked={isOpen} onChange={() => setIsOpen(!isOpen)} />
+      </div>
+
       {/* Sidebar */}
       <motion.aside
-        className={`fixed sm:relative top-0 left-0 h-screen bg-yellow-500 text-black py-8 px-4 flex flex-col items-center shadow-lg
+        className={`fixed sm:relative top-0 left-0 h-screen bg-purple-900 text-white py-8 px-4 flex flex-col items-center shadow-lg
           w-64 sm:w-64 z-[999]
           transform transition-transform duration-300 ease-in-out
-          ${
-            isOpen
-              ? "translate-x-0"
-              : "-translate-x-full sm:translate-x-0"
-          }
+          ${isOpen ? "translate-x-0" : "-translate-x-full sm:translate-x-0"}
         `}
         style={{ y: translateY }}
         variants={sidebarVariants}
@@ -78,12 +74,12 @@ function Sidebar() {
       >
         {/* Profile Image */}
         <motion.div
-          className="w-28 h-28 rounded-full overflow-hidden border-4 border-white mb-6 shadow-md"
+          className="w-28 h-28 rounded-full overflow-hidden border-4 border-purple-400 mb-6 shadow-md shadow-purple-500"
           whileHover={{ scale: 1.05, rotate: 3 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
           <img
-            src={modude}
+            src={profile}
             alt="Profile"
             className="w-full h-full object-cover"
           />
@@ -105,8 +101,8 @@ function Sidebar() {
                   className={`flex items-center gap-4 px-5 py-2 rounded-full transition-all duration-300 transform
                     ${
                       isActive
-                        ? "bg-white text-yellow-500 font-bold shadow-md scale-105"
-                        : "hover:bg-white hover:text-yellow-600"
+                        ? "bg-white text-purple-900 font-bold shadow-md scale-105"
+                        : "hover:bg-purple-700 hover:text-white"
                     }`}
                 >
                   <span className="text-xl">{item.icon}</span>

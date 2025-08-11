@@ -11,226 +11,166 @@ import {
 
 const ResumeSection = () => {
   const objective =
-    "Self-motivated 12th-grade graduate with a strong passion for web development and a completed MERN Stack course. Looking to secure a position as a full-stack developer to utilize my expertise in front-end and back-end development, while gaining real-world experience in a fast-paced tech environment.";
-
-  const skills = [
-    { category: "Frontend", list: "HTML, CSS, JavaScript, Tailwind CSS, React, Responsive Design" },
-    { category: "Backend", list: "Node.js, Express.js, REST APIs" },
-    { category: "Database", list: "MongoDB, Basic SQL" },
-    { category: "Tools", list: "Postman, Git, GitHub" },
-  ];
-
-  const softSkills = ["Adaptability", "Problem-solving", "Teamwork", "Creativity"];
-
-  const certifications = [
-    "Computer Basic Certificate",
-    "Web Designing Certificate",
-    "MERN Stack Certificate from OnetickCDC",
-  ];
-
-  const education = [
-    {
-      year: "Present",
-      title: "Bachelor of Computer Applications (BCA)",
-      desc: "MDU University – 1st Year (Non-Attending)",
-    },
-    {
-      year: "2022",
-      title: "12th from HBSE",
-      desc: "",
-    },
-  ];
-
-  const experience = [
-    {
-      year: "6 Months",
-      title: "Web Developer Intern",
-      desc: "Worked on various web projects and practical development tasks.",
-    },
-  ];
-
-  const projects = [
-    "Weather Forecast",
-    "School Management ERP",
-    "SRS School",
-    "Election ERP (VotePro) – Pending",
-  ];
+    "Aspiring Full Stack Web Developer (MERN) with a strong foundation in web technologies and creative design tools. Currently pursuing graduation and seeking an internship to apply and enhance skills in a real-world environment.";
 
   const fadeUp = {
     hidden: { opacity: 0, y: 20 },
     visible: (i = 1) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.2, duration: 0.6 },
+      transition: { delay: i * 0.15, duration: 0.6 },
     }),
   };
 
+  const skills = [
+    "HTML", "CSS", "JavaScript", "Tailwind CSS", "React.js",
+    "Node.js", "Express.js", "MongoDB",
+    "REST API", "Git & GitHub",
+    "Responsive Design & Web Accessibility"
+  ];
+
+  const softSkills = [
+    "Strong Problem-Solving Ability",
+    "Communication & Teamwork",
+    "Quick Learner and Highly Adaptable",
+    "Organized & Project Management Skills",
+  ];
+
+  const education = [
+    { year: "2025", title: "Senior Secondary (12th Grade) – NIOS" },
+    { year: "2023", title: "Secondary (10th Grade) – Rawal International School" },
+  ];
+
+  const experience = [
+    { year: "Jun 2025", title: "Frontend Developer (Intern) – Adhana Innovations, Faridabad" },
+  ];
+
+  const certifications = [
+    "Full Stack MERN Development – Encrobytes Technologies (Faridabad), 2025",
+  ];
+
+  const projects = [
+    "To-Do List Web App",
+    "Portfolio Website",
+    "Login & Signup System with Token Authentication",
+    "Weather App",
+    "Tic-Tac-Toe Game (JavaScript)",
+    "E-Commerce Website (MERN Stack)",
+    "OTP Generator (Frontend + Logic)",
+  ];
+
+  const Card = ({ children, custom }) => (
+    <motion.div
+      className="bg-gradient-to-br from-purple-50 via-white to-purple-100 p-5 rounded-xl shadow-md hover:shadow-purple-300 transition-all duration-300 hover:-translate-y-1"
+      custom={custom}
+      variants={fadeUp}
+      whileHover={{ scale: 1.02 }}
+    >
+      {children}
+    </motion.div>
+  );
+
   return (
-    <section className="min-h-screen flex justify-center bg-gray-100 text-black font-sans px-4 py-10 sm:py-16">
+    <section className="min-h-screen bg-gradient-to-br from-purple-100 via-white to-purple-50 rounded-xl py-12 px-4 sm:px-6 lg:px-10 text-black font-sans">
       <motion.div
-        className="w-full max-w-5xl"
+        className="max-w-5xl mx-auto space-y-8"
         initial="hidden"
         animate="visible"
-        custom={0}
         variants={fadeUp}
       >
-        {/* Objective */}
+        {/* Heading */}
         <motion.h2
-          className="text-3xl sm:text-4xl font-bold mb-6 border-l-4 border-yellow-500 pl-4"
+          className="text-4xl font-extrabold text-purple-700 border-b-4 border-purple-300 pb-2 inline-block"
           custom={1}
           variants={fadeUp}
-          initial="hidden"
-          animate="visible"
         >
           RESUME
         </motion.h2>
 
-        <motion.div
-          className="mb-10 p-6 bg-white rounded-lg shadow-md"
-          custom={2}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-        >
-          <h3 className="text-xl font-semibold text-yellow-500 mb-2">OBJECTIVE</h3>
-          <p className="text-sm text-gray-700">{objective}</p>
-        </motion.div>
+        {/* Objective Section */}
+        <Card custom={2}>
+          <h3 className="text-lg font-semibold text-purple-600 mb-3 flex items-center gap-2">
+            🎯 Profile
+          </h3>
+          <p className="text-sm text-gray-700 leading-relaxed">{objective}</p>
+        </Card>
 
-        {/* Skills */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10"
-          custom={3}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-        >
-          <motion.div
-            className="bg-white p-6 rounded-lg shadow-md"
-            custom={4}
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-          >
-            <h3 className="text-xl font-semibold text-yellow-500 mb-4 flex items-center gap-2">
-              <FaCode /> TECHNICAL SKILLS
+        {/* Skills + Soft Skills */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card custom={3}>
+            <h3 className="text-lg font-semibold text-purple-600 mb-3 flex items-center gap-2">
+              <FaCode className="animate-pulse" /> Technical Skills
             </h3>
-            <ul className="list-disc pl-6 text-sm text-gray-700 space-y-2">
+            <ul className="text-sm text-gray-700 grid grid-cols-2 gap-x-6 list-disc pl-5">
               {skills.map((skill, i) => (
-                <li key={i}>
-                  <span className="font-semibold">{skill.category}:</span> {skill.list}
-                </li>
+                <li key={i}>{skill}</li>
               ))}
             </ul>
-          </motion.div>
+          </Card>
 
-          <motion.div
-            className="bg-white p-6 rounded-lg shadow-md"
-            custom={5}
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-          >
-            <h3 className="text-xl font-semibold text-yellow-500 mb-4">SOFT SKILLS</h3>
-            <ul className="list-none space-y-2 text-sm text-gray-700">
+          <Card custom={4}>
+            <h3 className="text-lg font-semibold text-purple-600 mb-3">Soft Skills</h3>
+            <ul className="text-sm text-gray-700 space-y-1">
               {softSkills.map((skill, i) => (
                 <li key={i} className="flex items-center gap-2">
-                  <FaCheckCircle className="text-yellow-500" /> {skill}
+                  <FaCheckCircle className="text-purple-500 animate-pulse" /> {skill}
                 </li>
               ))}
             </ul>
-          </motion.div>
-        </motion.div>
+          </Card>
+        </div>
 
-        {/* Certifications */}
-        <motion.div
-          className="bg-white p-6 rounded-lg shadow-md mb-10"
-          custom={6}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-        >
-          <h3 className="text-xl font-semibold text-yellow-500 mb-4 flex items-center gap-2">
-            <FaCertificate /> CERTIFICATIONS
-          </h3>
-          <ul className="list-disc pl-6 text-sm text-gray-700 space-y-1">
-            {certifications.map((cert, i) => (
-              <li key={i}>{cert}</li>
-            ))}
-          </ul>
-        </motion.div>
-
-        {/* Education & Experience */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10"
-          custom={7}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-        >
-          {/* Education */}
-          <motion.div
-            className="bg-white p-6 rounded-lg shadow-md"
-            custom={8}
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-          >
-            <h3 className="text-xl font-bold text-yellow-500 mb-4 flex items-center gap-2">
-              <FaGraduationCap /> EDUCATION
+        {/* Education + Experience */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card custom={5}>
+            <h3 className="text-lg font-semibold text-purple-600 mb-3 flex items-center gap-2">
+              <FaGraduationCap className="animate-bounce" /> Education
             </h3>
-            <div className="space-y-6">
-              {education.map((item, i) => (
-                <div key={i} className="border-l-4 border-yellow-500 pl-4 relative">
-                  <div className="absolute -left-2 top-1 w-4 h-4 bg-yellow-500 rounded-full border-2 border-white"></div>
-                  <span className="text-sm font-medium text-gray-600">{item.year}</span>
-                  <h4 className="text-md font-semibold">{item.title}</h4>
-                  <p className="text-sm text-gray-700">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Experience */}
-          <motion.div
-            className="bg-white p-6 rounded-lg shadow-md"
-            custom={9}
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-          >
-            <h3 className="text-xl font-bold text-yellow-500 mb-4 flex items-center gap-2">
-              <FaBriefcase /> EXPERIENCE
-            </h3>
-            <div className="space-y-6">
-              {experience.map((item, i) => (
-                <div key={i} className="border-l-4 border-yellow-500 pl-4 relative">
-                  <div className="absolute -left-2 top-1 w-4 h-4 bg-yellow-500 rounded-full border-2 border-white"></div>
-                  <span className="text-sm font-medium text-gray-600">{item.year}</span>
-                  <h4 className="text-md font-semibold">{item.title}</h4>
-                  <p className="text-sm text-gray-700">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </motion.div>
-
-        {/* Projects */}
-        <motion.div
-          className="bg-white p-6 rounded-lg shadow-md"
-          custom={10}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-        >
-          <h3 className="text-xl font-semibold text-yellow-500 mb-4 flex items-center gap-2">
-            <FaProjectDiagram /> PROJECTS
-          </h3>
-          <ul className="list-disc pl-6 text-sm text-gray-700 space-y-1">
-            {projects.map((proj, i) => (
-              <li key={i}>{proj}</li>
+            {education.map((edu, i) => (
+              <div key={i} className="text-sm mb-2">
+                <p className="font-medium text-purple-700">{edu.year}</p>
+                <p className="text-gray-700">{edu.title}</p>
+              </div>
             ))}
-          </ul>
-        </motion.div>
+          </Card>
+
+          <Card custom={6}>
+            <h3 className="text-lg font-semibold text-purple-600 mb-3 flex items-center gap-2">
+              <FaBriefcase className="animate-bounce" /> Experience
+            </h3>
+            {experience.map((exp, i) => (
+              <div key={i} className="text-sm mb-2">
+                <p className="font-medium text-purple-700">{exp.year}</p>
+                <p className="text-gray-700">{exp.title}</p>
+              </div>
+            ))}
+          </Card>
+        </div>
+
+        {/* Certifications + Projects */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card custom={7}>
+            <h3 className="text-lg font-semibold text-purple-600 mb-3 flex items-center gap-2">
+              <FaCertificate className="animate-spin-slow" /> Training & Certifications
+            </h3>
+            <ul className="list-disc pl-5 text-sm text-gray-700">
+              {certifications.map((cert, i) => (
+                <li key={i}>{cert}</li>
+              ))}
+            </ul>
+          </Card>
+
+          <Card custom={8}>
+            <h3 className="text-lg font-semibold text-purple-600 mb-3 flex items-center gap-2">
+              <FaProjectDiagram className="animate-spin-slow" /> Projects
+            </h3>
+            <ul className="list-disc pl-5 text-sm text-gray-700">
+              {projects.map((proj, i) => (
+                <li key={i}>{proj}</li>
+              ))}
+            </ul>
+          </Card>
+        </div>
       </motion.div>
     </section>
   );

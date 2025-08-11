@@ -26,7 +26,7 @@ export default function ArcSidebar({ activeIndex, setActiveIndex }) {
           cy="140"
           r="100"
           fill="none"
-          stroke="#facc15"
+          stroke="#cbc3d3ff"
           strokeWidth="3"
           strokeDasharray="628 400"
           strokeLinecap="round"
@@ -46,8 +46,8 @@ export default function ArcSidebar({ activeIndex, setActiveIndex }) {
           };
           return (
             <>
-              <circle cx={dot1.x} cy={dot1.y} r="6" fill="#facc15" />
-              <circle cx={dot2.x} cy={dot2.y} r="6" fill="#facc15" />
+              <circle cx={dot1.x} cy={dot1.y} r="6" fill="#d1c9dbff" />
+              <circle cx={dot2.x} cy={dot2.y} r="6" fill="#d1c9dbff" />
             </>
           );
         })()}
@@ -81,8 +81,8 @@ export default function ArcSidebar({ activeIndex, setActiveIndex }) {
                 className={`
                   w-10 h-10 rounded-full flex items-center justify-center shadow-lg transform transition-transform duration-300
                   ${activeIndex === i
-                    ? "bg-yellow-400 text-black scale-110 shadow-2xl"
-                    : "bg-black text-white hover:bg-yellow-500 hover:text-black hover:scale-105"}
+                    ? "bg-purple-400 text-white scale-110 shadow-2xl shadow-white"
+                    : "bg-black text-white hover:bg-purple-500 hover:text-whitex shadow-md shadow-white  hover:scale-105"}
                 `}
               >
                 <i className={`fas fa-${icon} text-sm`}></i>
